@@ -11,29 +11,51 @@ const chess = () => {
     return board;
   };
 
+  const checkCoordinates = (array) => {
+    const x = array[0];
+    const y = array[1];
+    const trueCheck = ((y < 8 && y > -1) && (x < 8 && x > -1));
+    return (trueCheck) ? array : null;
+  };
+
   const createKnight = (x, y) => {
     const getMoves = () => {
-      const move1 = [x - 1, y + 2];
-      const move2 = [x + 1, y + 2];
-      const move3 = [x - 2, y + 1];
-      const move4 = [x + 2, y + 1];
-      const move5 = [x - 2, y - 1];
-      const move6 = [x + 2, y - 1];
-      const move7 = [x - 1, y - 2];
-      const move8 = [x + 1, y - 2];
-      return [move1, move2, move3, move4, move5, move6, move7, move8];
+      let move1 = [x - 1, y + 2];
+      let move2 = [x + 1, y + 2];
+      let move3 = [x - 2, y + 1];
+      let move4 = [x + 2, y + 1];
+      let move5 = [x - 2, y - 1];
+      let move6 = [x + 2, y - 1];
+      let move7 = [x - 1, y - 2];
+      let move8 = [x + 1, y - 2];
+      move1 = checkCoordinates(move1);
+      move2 = checkCoordinates(move2);
+      move3 = checkCoordinates(move3);
+      move4 = checkCoordinates(move4);
+      move5 = checkCoordinates(move5);
+      move6 = checkCoordinates(move6);
+      move7 = checkCoordinates(move7);
+      move8 = checkCoordinates(move8);
+
+      return [
+        move1, move2, move3, move4, move5, move6, move7, move8,
+      ];
+    };
+
+    const possibleMoves = () => {
+
     };
 
     return {
       x,
       y,
-      possibleMoves: getMoves(),
+      moves: getMoves(),
     };
   };
 
   return {
     gameboard: createGameboard(),
-    knight: createKnight(4, 2),
+    knight: createKnight(0, 0),
   };
 };
 

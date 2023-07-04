@@ -15,35 +15,26 @@ const chess = () => {
     const x = array[0];
     const y = array[1];
     const trueCheck = ((y < 8 && y > -1) && (x < 8 && x > -1));
-    return (trueCheck) ? array : null;
+    return (trueCheck) ? array : undefined;
   };
 
   const createKnight = (x, y) => {
     const getMoves = () => {
-      let move1 = [x - 1, y + 2];
-      let move2 = [x + 1, y + 2];
-      let move3 = [x - 2, y + 1];
-      let move4 = [x + 2, y + 1];
-      let move5 = [x - 2, y - 1];
-      let move6 = [x + 2, y - 1];
-      let move7 = [x - 1, y - 2];
-      let move8 = [x + 1, y - 2];
-      move1 = checkCoordinates(move1);
-      move2 = checkCoordinates(move2);
-      move3 = checkCoordinates(move3);
-      move4 = checkCoordinates(move4);
-      move5 = checkCoordinates(move5);
-      move6 = checkCoordinates(move6);
-      move7 = checkCoordinates(move7);
-      move8 = checkCoordinates(move8);
+      const array = [
+        [x - 1, y + 2], [x + 1, y + 2],
+        [x - 2, y + 1], [x + 2, y + 1],
+        [x - 2, y - 1], [x + 2, y - 1],
+        [x - 1, y - 2], [x + 1, y - 2]];
 
-      return [
-        move1, move2, move3, move4, move5, move6, move7, move8,
-      ];
-    };
+      const array2 = [];
+      let i = 0;
 
-    const possibleMoves = () => {
-
+      while (i < array.length) {
+        const move = checkCoordinates(array[i]);
+        if (move) { array2.push(move); }
+        i += 1;
+      }
+      return array2;
     };
 
     return {

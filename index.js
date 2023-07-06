@@ -21,10 +21,10 @@ const chess = () => {
   const createKnight = (x, y) => {
     const getMoves = () => {
       const array = [
-        [x - 1, y + 2], [x + 1, y + 2],
-        [x - 2, y + 1], [x + 2, y + 1],
+        [x - 1, y - 2], [x + 1, y - 2],
         [x - 2, y - 1], [x + 2, y - 1],
-        [x - 1, y - 2], [x + 1, y - 2]];
+        [x - 2, y + 1], [x + 2, y + 1],
+        [x - 1, y + 2], [x + 1, y + 2]];
 
       const array2 = [];
       let i = 0;
@@ -37,18 +37,26 @@ const chess = () => {
       return array2;
     };
 
-    return {
-      x,
-      y,
-      moves: getMoves(),
-    };
+    return { x, y, moves: getMoves() };
   };
 
   return {
     gameboard: createGameboard(),
-    knight: createKnight(0, 0),
+    knight: createKnight(4, 4),
   };
 };
+
+function createAdjMatrix(v) {
+  const array = [];
+  for (let i = 0; i < v; i += 1) {
+    const vArray = [];
+    for (let j = 0; j < v; j += 1) {
+      vArray.push(0);
+    }
+    array.push(vArray);
+  }
+  return array;
+}
 
 const board = chess();
 

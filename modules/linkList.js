@@ -162,11 +162,3 @@ const linkedList = () => ({
 });
 
 export default linkedList;
-
-const list = linkedList();
-list.append('C');
-list.append('A');
-list.append('R');
-list.pop();
-console.log(list);
-console.log(list.toString());
